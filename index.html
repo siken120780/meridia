@@ -360,20 +360,23 @@
         <p class="note">The build is free. A small monthly keeps it hosted, updated and looked after, so there's nothing big to find upfront.</p>
       </div>
       <div class="cap-right">
-        <form id="leadForm" novalidate>
-          <div class="field"><label for="name">Your name</label><input id="name" name="name" type="text" required autocomplete="name"></div>
-          <div class="field"><label for="salon">Salon name</label><input id="salon" name="salon_name" type="text" required></div>
-          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required autocomplete="email"></div>
-          <div class="field"><label for="insta">Instagram handle</label><input id="insta" name="instagram" type="text" placeholder="@yoursalon"></div>
-          <div class="field"><label for="type">Salon type</label>
-            <select id="type" name="salon_type">
-              <option>Hair</option><option>Nails</option><option>Lash &amp; brow</option>
-              <option>Beauty / aesthetics</option><option>Barber</option><option>Other</option>
-            </select>
-          </div>
-          <button type="submit" class="btn btn-gold">Show me my mockup <span class="arw">&rarr;</span></button>
-        </form>
-        <div class="form-msg" id="formMsg"><div class="t serif">Thank you</div><p>Your details are in. I'll be in touch with your free mockup within a day or two.</p></div>
+        <iframe
+          src="https://api.leadconnectorhq.com/widget/form/YkQz9tJB5FO0bWZXa5mu"
+          style="width:100%;height:640px;border:none;border-radius:8px"
+          id="inline-YkQz9tJB5FO0bWZXa5mu"
+          data-layout="{'id':'INLINE'}"
+          data-trigger-type="alwaysShow"
+          data-trigger-value=""
+          data-activation-type="alwaysActivated"
+          data-activation-value=""
+          data-deactivation-type="neverDeactivate"
+          data-deactivation-value=""
+          data-form-name="Salon Landing Lead"
+          data-height="undefined"
+          data-layout-iframe-id="inline-YkQz9tJB5FO0bWZXa5mu"
+          data-form-id="YkQz9tJB5FO0bWZXa5mu"
+          title="Salon Landing Lead">
+        </iframe>
         <p class="dm-line">Prefer to chat? DM me <a href="#" id="dmLink">@yourhandle</a></p>
       </div>
     </div>
@@ -392,15 +395,8 @@
   document.getElementById('dmLink').href = 'https://instagram.com/'+IG_HANDLE;
   const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.rv').forEach(el=>io.observe(el));
-  const form=document.getElementById('leadForm'), msg=document.getElementById('formMsg');
-  form.addEventListener('submit',async(e)=>{
-    e.preventDefault();
-    const d=Object.fromEntries(new FormData(form).entries());
-    d.source='meridia-landing'; d.submitted_at=new Date().toISOString();
-    try{ if(GHL_WEBHOOK_URL){await fetch(GHL_WEBHOOK_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=UTF-8'},body:JSON.stringify(d)});}
-      form.style.display='none'; msg.classList.add('show');
-    }catch(err){ form.style.display='none'; msg.classList.add('show'); }
-  });
+  // Lead capture handled by embedded GHL form below.
 </script>
+<script src="https://link.msgsndr.com/js/form_embed.js"></script>
 </body>
 </html>
